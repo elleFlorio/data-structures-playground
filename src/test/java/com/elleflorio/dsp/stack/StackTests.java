@@ -2,11 +2,10 @@ package com.elleflorio.dsp.stack;
 
 import com.elleflorio.dsp.exception.StackErrorOverflow;
 import com.elleflorio.dsp.exception.StackErrorUnderflow;
-import com.elleflorio.dsp.stack.ArrayStack;
-import com.elleflorio.dsp.stack.Stack;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class StackTests {
 
