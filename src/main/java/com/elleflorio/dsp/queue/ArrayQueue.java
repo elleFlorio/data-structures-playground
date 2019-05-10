@@ -28,9 +28,6 @@ public class ArrayQueue<T> implements Queue<T> {
     }
 
     public boolean isQueueFull() {
-        if (size == 1) {
-            return head == tail - 1;
-        }
         return (head % size == tail % size) && (head != tail);
     }
 

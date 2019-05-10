@@ -25,7 +25,7 @@ public class ChainingHashTable<K, V> implements HashTable<K, V> {
      * m should be a prime not too close to an exact power of 2.
      * */
     private Function<K, Integer> division = (K key) -> {
-        int hashed = key.hashCode();
+        int hashed = computeIntegerFromKey(key);
         return hashed % slots;
     };
 
@@ -38,7 +38,7 @@ public class ChainingHashTable<K, V> implements HashTable<K, V> {
      * Good choice for A is (sqrt(5) - 1)/2 according to Knuth [211]
      * */
     private Function<K, Integer> multiplication = (K key) -> {
-        int hashed = key.hashCode();
+        int hashed = computeIntegerFromKey(key);
         return (int) Math.floor(slots * (hashed * A % 1));
     };
 
@@ -51,9 +51,13 @@ public class ChainingHashTable<K, V> implements HashTable<K, V> {
      * b = [0..p-1]
      */
     private Function<K, Integer> universal = (K key) -> {
-        int hashed = key.hashCode();
+        int hashed = computeIntegerFromKey(key);
         return ((a * hashed + b) % P) % slots;
     };
+
+    private int computeIntegerFromKey(K key) {
+        return key.hashCode();
+    }
 
     public ChainingHashTable(int slots, HashFunctionType hashType) {
         this.slots = slots;
